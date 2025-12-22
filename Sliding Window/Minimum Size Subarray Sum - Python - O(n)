@@ -1,0 +1,22 @@
+class Solution:
+    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+
+        left=0
+        currentSum=0
+        minWindow=float('inf')
+        n = len(nums)
+
+        for i in range(n):
+            currentSum = currentSum + nums[i]
+
+            while currentSum>=target:
+                minWindow = min(minWindow, i-left+1)
+                currentSum = currentSum - nums[left]
+                left+=1
+        if minWindow == float('inf'):
+            return 0
+        else:
+            return minWindow
+
+        
+        
