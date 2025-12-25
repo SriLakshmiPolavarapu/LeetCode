@@ -1,0 +1,32 @@
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        
+        need = {}
+        window = {}
+        left = 0
+
+        if len(s1) > len(s2):
+            return False
+        
+        for i in range(len(s1)):
+            c = s1[i]
+            need[c] = need.get(c, 0) + 1
+
+        for j in range((len(s2))):
+            c = s2[j]
+            window[c] = window.get(c, 0) + 1
+
+            if j-left+1 > len(s1):
+                leftchar = s2[left]
+                window[leftchar] -= 1
+                if window[leftchar] == 0:
+                    del window[leftchar]
+                left += 1
+
+            if j - left + 1 == len(s1):
+                if window == need:
+                    return True
+
+        return False
+
+
