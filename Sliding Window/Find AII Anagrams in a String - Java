@@ -1,0 +1,44 @@
+class Solution {
+    public List<Integer> findAnagrams(String s, String p) {
+
+        HashMap<Character, Integer> map1 = new HashMap<>();
+        HashMap<Character, Integer> map2 = new HashMap<>();
+        List<Integer> result = new ArrayList<>();
+
+        if (p.length() > s.length()) {
+            return result;
+        }
+
+        // build frequency map for p
+        for (int i = 0; i < p.length(); i++) {
+            char c = p.charAt(i);
+            map2.put(c, map2.getOrDefault(c, 0) + 1);
+        }
+
+        int left = 0;
+
+        for (int j = 0; j < s.length(); j++) {
+            char c = s.charAt(j);
+            map1.put(c, map1.getOrDefault(c, 0) + 1);
+
+            // keep window size fixed
+            if (j - left + 1 > p.length()) {
+                char leftChar = s.charAt(left);
+                map1.put(leftChar, map1.get(leftChar) - 1);
+                if (map1.get(leftChar) == 0) {
+                    map1.remove(leftChar);
+                }
+                left++;
+            }
+
+            // check for anagram
+            if (j - left + 1 == p.length()) {
+                if (map1.equals(map2)) {
+                    result.add(left);
+                }
+            }
+        }
+
+        return result;
+    }
+}
