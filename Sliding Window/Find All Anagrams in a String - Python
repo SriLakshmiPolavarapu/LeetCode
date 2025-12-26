@@ -1,0 +1,33 @@
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        
+        map1={}
+        map2={}
+        result = list()
+
+        if len(p) > len(s):
+            return result
+
+        for i in range(len(p)):
+            c=p[i]
+            map2[c] = map2.get(c, 0) +1
+
+        left=0
+
+        for j in range(len(s)):
+            c=s[j]
+            map1[c] = map1.get(c, 0) + 1
+
+            if j-left+1 > len(p):
+                left_char = s[left]
+                map1[left_char]-= 1
+
+                if map1[left_char] == 0:
+                    del map1[left_char]
+                left+=1
+
+            if j-left+1 == len(p):
+                if map1 == map2:
+                    result.append(left)
+
+        return result
