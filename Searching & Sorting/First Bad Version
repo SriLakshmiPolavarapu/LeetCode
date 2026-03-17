@@ -22,3 +22,4 @@ public class Solution extends VersionControl {
         return left;
     }
 }
+//if middle element is not bad version, then bad version might be after mid only
