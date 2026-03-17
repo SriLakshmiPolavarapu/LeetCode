@@ -21,3 +21,5 @@ class Solution:
 # Brute Force method is Hash table but it doesn't work in all the cases.
 # If element is repeated more times in a Linked List then entering them into Hash Table would return a wrong answer.
 
+# always remember - to check cycles if we must do +1 and +2, if they meet, then there's a cycle.
+# why did we take -  while p2 and p2.next: - p2 here because p2 outruns faster than p1 - because of +2 movement.
