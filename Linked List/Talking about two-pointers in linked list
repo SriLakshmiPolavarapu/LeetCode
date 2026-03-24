@@ -1,6 +1,10 @@
 When to use slow and fast?
 
+--> using fast and slow 
+
 Version 1
+
+--> fast = 2x and slow = x
 
 1. to find th emiddle of a linked list
       --> by the time fast reaches to the end, slow is at the middle
