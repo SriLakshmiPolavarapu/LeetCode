@@ -1,0 +1,22 @@
+When to use slow and fast?
+
+Version 1
+
+1. to find th emiddle of a linked list
+      --> by the time fast reaches to the end, slow is at the middle
+
+2. to detect a cycle
+      --> both fast and slow will overlap
+
+3. to find where the cycle starts
+
+Version 2
+
+1. remove nth node from end
+    --> fast moves n+1
+    --> fast and slow moves together
+    --> when fast becomes null then slow will be before the nth node
+
+2. find nth node from end
+    --> fast moves n times
+    --> slow and fast moves togther
