@@ -1,0 +1,25 @@
+class Solution {
+    public List<String> removeAnagrams(String[] words) {
+
+        List<String> result = new ArrayList<>();
+        result.add(words[0]); //result = ["abba"]
+
+        for(int i = 1; i < words.length; i++) {
+            String word = words[i];
+
+            char[] c = word.toCharArray();
+            Arrays.sort(c);
+            String current = new String(c);
+
+            char[] p = words[i-1].toCharArray();
+            Arrays.sort(p);
+            String prev = new String(p);
+
+            if(!current.equals(prev)) {
+                result.add(word);
+            }
+        }
+
+        return result;
+    }
+}
